@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru" class="theme-blue">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>University Mini App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-background transition-colors duration-300">
+  <div class="max-w-5xl mx-auto p-4">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div>
+        <h1 class="text-2xl font-semibold text-primary">University Mini App</h1>
+        <p class="text-sm text-primary-70">Быстрый интерфейс для управления ДЗ и новостями</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <label class="text-sm text-primary-80">Тема:</label>
+        <div class="inline-flex items-center gap-2 bg-card p-1 rounded-full shadow-sm">
+          <button class="theme-btn px-3 py-1 rounded-full text-sm" data-theme="light">Светлая</button>
+          <button class="theme-btn px-3 py-1 rounded-full text-sm accent-bg text-white shadow" data-theme="blue">Голубая</button>
+          <button class="theme-btn px-3 py-1 rounded-full text-sm" data-theme="dark">Тёмная</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Sidebar -->
+      <aside class="md:col-span-1">
+        <div class="bg-card p-4 rounded-2xl shadow border border-transparent">
+          <nav class="space-y-2 flex flex-col">
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">Главное</button>
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📚 Домашка</button>
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">➕ Добавить ДЗ</button>
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">🗑️ Удалить ДЗ</button>
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📢 Новости</button>
+            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📝 Опубликовать новость</button>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main Section -->
+      <section class="md:col-span-3 space-y-6">
+        <!-- Quick Stats -->
+        <div class="bg-card p-4 rounded-2xl shadow flex flex-col md:flex-row gap-4 md:items-center">
+          <div class="flex-1">
+            <h3 class="text-lg font-medium text-primary">Последнее ДЗ</h3>
+            <p class="text-sm text-primary-70 mt-1">Математика: Задача 5-7 стр. 21</p>
+          </div>
+          <div class="text-sm text-primary-80">Обновлено: <span id="current-date"></span></div>
+        </div>
+
+        <!-- Homework Card -->
+        <div class="bg-card p-4 rounded-2xl shadow">
+          <h3 class="font-semibold text-primary">Домашнее задание</h3>
+          <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 muted rounded-lg">
+              <div class="text-sm text-primary-80">Предмет</div>
+              <div class="font-medium text-primary mt-1">Информатика</div>
+              <div class="text-sm text-primary-70 mt-2">Задание: Сделать программу на Python — калькулятор дробей.</div>
+            </div>
+            <div class="p-3 muted rounded-lg">
+              <div class="text-sm text-primary-80">Файлы</div>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <button class="px-3 py-1 rounded bg-primary-05 text-primary-90">📎 solution.py</button>
+                <button class="px-3 py-1 rounded bg-primary-05 text-primary-90">🖼️ diagram.png</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Card -->
+        <div class="bg-card p-4 rounded-2xl shadow">
+          <h3 class="font-semibold text-primary">Новости</h3>
+          <ul class="mt-3 space-y-3">
+            <li class="p-3 muted rounded-lg">
+              <div class="text-sm text-primary-70">📢 10 сент. — Новая расписание консультаций.</div>
+            </li>
+            <li class="p-3 muted rounded-lg">
+              <div class="text-sm text-primary-70">📢 3 сент. — Сдача курсовых работ.</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Publish Card -->
+        <div class="bg-card p-4 rounded-2xl shadow">
+          <h3 class="font-semibold text-primary">Опубликовать новость / добавить ДЗ</h3>
+          <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 muted rounded-lg">
+              <label class="block text-sm text-primary-80">Текст новости</label>
+              <textarea class="w-full mt-2 p-2 rounded border-0 bg-transparent text-primary-90" rows="4" placeholder="Напиши текст..."></textarea>
+              <div class="mt-2 flex justify-end">
+                <button class="px-3 py-1 rounded-lg accent-bg text-white text-sm">Опубликовать</button>
+              </div>
+            </div>
+            <div class="p-3 muted rounded-lg">
+              <label class="block text-sm text-primary-80">Добавить ДЗ</label>
+              <input id="dz-input" class="w-full mt-2 p-2 rounded border-0 bg-transparent text-primary-90" placeholder="Текст ДЗ" />
+              <div class="mt-2 flex items-center gap-2 flex-wrap">
+                <button class="px-3 py-1 rounded-lg text-primary-90 border border-primary-10">📎 Прикрепить файл</button>
+                <button id="add-dz-btn" class="px-3 py-1 rounded-lg accent-bg text-white">Добавить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-sm text-primary-70">
+      Mini App — светлая (бело-голубая) и тёмная тема. Настроено для учебной группы.
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
