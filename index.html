@@ -1,118 +1,218 @@
 <!DOCTYPE html>
-<html lang="ru" class="theme-blue">
+<html lang="ru" class="theme-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>University Mini App</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Mini App — Домашка</title>
+  <style>
+    /* ==== ТЕМЫ ==== */
+    :root {
+      --bg: #ffffff;
+      --muted: #f8fafc;
+      --text: #0f172a;
+      --card: #ffffff;
+      --accent: #0ea5e9;
+      --accent-600: #0284c7;
+    }
+
+    .theme-light {
+      --bg: #ffffff;
+      --muted: #f8fafc;
+      --text: #0f172a;
+      --card: #ffffff;
+      --accent: #0ea5e9;
+      --accent-600: #0284c7;
+    }
+
+    .theme-blue {
+      --bg: #f8fbff;
+      --muted: #eef8ff;
+      --text: #05263a;
+      --card: #ffffff;
+      --accent: #0ea5ff;
+      --accent-600: #0077c2;
+    }
+
+    .theme-dark {
+      --bg: #0b1220;
+      --muted: #071022;
+      --text: #ffffff;
+      --card: #071627;
+      --accent: #60a5fa;
+      --accent-600: #3b82f6;
+    }
+
+    /* ==== ОСНОВА ==== */
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0 0 70px 0; /* место для нижней навигации */
+    }
+
+    h1, h3 {
+      margin: 0;
+    }
+
+    .p-3 { padding: 12px; }
+    .mb-3 { margin-bottom: 12px; }
+    .mb-4 { margin-bottom: 16px; }
+    .mt-2 { margin-top: 8px; }
+
+    .bg-card { background: var(--card); }
+    .muted { background: var(--muted); }
+    .rounded-xl { border-radius: 12px; }
+    .rounded-lg { border-radius: 8px; }
+    .shadow { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+    .text-sm { font-size: 14px; }
+    .text-xs { font-size: 12px; }
+    .font-medium { font-weight: 500; }
+
+    button, textarea {
+      font-family: inherit;
+      border: none;
+      outline: none;
+    }
+
+    /* ==== КНОПКИ ==== */
+    .file-btn {
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .accent-bg {
+      background: var(--accent);
+    }
+
+    .action-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* ==== НИЖНЯЯ НАВИГАЦИЯ ==== */
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--card);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-around;
+      padding: 6px 0;
+    }
+
+    .nav-btn {
+      flex: 1;
+      text-align: center;
+      font-size: 22px;
+      padding: 6px 0;
+      cursor: pointer;
+    }
+
+    /* ==== ТЕКСТОВЫЕ ПОЛЯ ==== */
+    textarea {
+      width: 100%;
+      background: var(--muted);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 14px;
+      resize: vertical;
+      color: var(--text);
+    }
+  </style>
 </head>
-<body class="bg-background transition-colors duration-300">
-  <div class="max-w-5xl mx-auto p-4">
+<body>
+  <div class="p-3">
+
     <!-- Header -->
-    <header class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-      <div>
-        <h1 class="text-2xl font-semibold text-primary">Я когда-нибудь сделаю, или не сделаю, мозги не делайте короч</h1>
-        <p class="text-sm text-primary-70">Быстрый интерфейс для управления ДЗ и новостями</p>
-      </div>
-      <div class="flex items-center gap-2">
-        <label class="text-sm text-primary-80">Тема:</label>
-        <div class="inline-flex items-center gap-2 bg-card p-1 rounded-full shadow-sm">
-          <button class="theme-btn px-3 py-1 rounded-full text-sm" data-theme="light">Светлая</button>
-          <button class="theme-btn px-3 py-1 rounded-full text-sm accent-bg text-white shadow" data-theme="blue">Голубая</button>
-          <button class="theme-btn px-3 py-1 rounded-full text-sm" data-theme="dark">Тёмная</button>
-        </div>
-      </div>
+    <header class="mb-4">
+      <h1 class="text-xl font-semibold">📚 Потом сделаю, когда сам решу, мозги не делать</h1>
+      <p class="text-sm" style="color: rgba(0,0,0,0.6);">Управление прямо из Telegram Mini App</p>
     </header>
 
-    <!-- Main Content -->
-    <main class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6">
-      <!-- Sidebar -->
-      <aside class="md:col-span-1">
-        <div class="bg-card p-4 rounded-2xl shadow border border-transparent">
-          <nav class="space-y-2 flex flex-col">
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">Главное</button>
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📚 Домашка</button>
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">➕ Добавить ДЗ</button>
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">🗑️ Удалить ДЗ</button>
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📢 Новости</button>
-            <button class="w-full text-left px-3 py-2 rounded-lg hover:accent-bg-10 transition text-primary-90">📝 Опубликовать новость</button>
-          </nav>
-        </div>
-      </aside>
+    <!-- Quick Stats -->
+    <div class="bg-card p-3 rounded-xl shadow mb-3">
+      <h3 class="font-medium">Последнее ДЗ</h3>
+      <p class="text-sm mt-1">Математика: стр. 21, задачи 5–7</p>
+      <p class="text-xs mt-2" style="opacity: 0.7;">Обновлено: <span id="current-date"></span></p>
+    </div>
 
-      <!-- Main Section -->
-      <section class="md:col-span-3 space-y-6">
-        <!-- Quick Stats -->
-        <div class="bg-card p-4 rounded-2xl shadow flex flex-col md:flex-row gap-4 md:items-center">
-          <div class="flex-1">
-            <h3 class="text-lg font-medium text-primary">Последнее ДЗ</h3>
-            <p class="text-sm text-primary-70 mt-1">Математика: Задача 5-7 стр. 21</p>
-          </div>
-          <div class="text-sm text-primary-80">Обновлено: <span id="current-date"></span></div>
-        </div>
+    <!-- Homework -->
+    <div class="bg-card p-3 rounded-xl shadow mb-3">
+      <h3 class="font-medium">📖 Домашка</h3>
+      <div class="mt-2 text-sm">
+        <b>Информатика</b> — Сделать калькулятор дробей на Python
+      </div>
+      <div class="mt-2 flex gap-2 flex-wrap">
+        <button class="file-btn">📎 solution.py</button>
+        <button class="file-btn">🖼️ diagram.png</button>
+      </div>
+    </div>
 
-        <!-- Homework Card -->
-        <div class="bg-card p-4 rounded-2xl shadow">
-          <h3 class="font-semibold text-primary">Домашнее задание</h3>
-          <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div class="p-3 muted rounded-lg">
-              <div class="text-sm text-primary-80">Предмет</div>
-              <div class="font-medium text-primary mt-1">Информатика</div>
-              <div class="text-sm text-primary-70 mt-2">Задание: Сделать программу на Python — калькулятор дробей.</div>
-            </div>
-            <div class="p-3 muted rounded-lg">
-              <div class="text-sm text-primary-80">Файлы</div>
-              <div class="mt-2 flex flex-wrap gap-2">
-                <button class="px-3 py-1 rounded bg-primary-05 text-primary-90">📎 solution.py</button>
-                <button class="px-3 py-1 rounded bg-primary-05 text-primary-90">🖼️ diagram.png</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- News -->
+    <div class="bg-card p-3 rounded-xl shadow mb-3">
+      <h3 class="font-medium">📰 Новости</h3>
+      <ul class="mt-2 text-sm" style="list-style: none; padding: 0; margin: 0;">
+<li class="muted p-2 rounded-lg">📢 10 сент — Новое расписание консультаций</li>
+        <li class="muted p-2 rounded-lg mt-2">📢 3 сент — Сдача курсовых работ</li>
+      </ul>
+    </div>
 
-        <!-- News Card -->
-        <div class="bg-card p-4 rounded-2xl shadow">
-          <h3 class="font-semibold text-primary">Новости</h3>
-          <ul class="mt-3 space-y-3">
-            <li class="p-3 muted rounded-lg">
-              <div class="text-sm text-primary-70">📢 10 сент. — Новая расписание консультаций.</div>
-            </li>
-            <li class="p-3 muted rounded-lg">
-              <div class="text-sm text-primary-70">📢 3 сент. — Сдача курсовых работ.</div>
-            </li>
-          </ul>
-        </div>
+    <!-- Publish -->
+    <div class="bg-card p-3 rounded-xl shadow">
+      <h3 class="font-medium">➕ Добавить</h3>
+      <textarea rows="3" placeholder="Напиши новость или ДЗ..."></textarea>
+      <button class="action-btn">✅ Опубликовать</button>
+    </div>
 
-        <!-- Publish Card -->
-        <div class="bg-card p-4 rounded-2xl shadow">
-          <h3 class="font-semibold text-primary">Опубликовать новость / добавить ДЗ</h3>
-          <div class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div class="p-3 muted rounded-lg">
-              <label class="block text-sm text-primary-80">Текст новости</label>
-              <textarea class="w-full mt-2 p-2 rounded border-0 bg-transparent text-primary-90" rows="4" placeholder="Напиши текст..."></textarea>
-              <div class="mt-2 flex justify-end">
-                <button class="px-3 py-1 rounded-lg accent-bg text-white text-sm">Опубликовать</button>
-              </div>
-            </div>
-            <div class="p-3 muted rounded-lg">
-              <label class="block text-sm text-primary-80">Добавить ДЗ</label>
-              <input id="dz-input" class="w-full mt-2 p-2 rounded border-0 bg-transparent text-primary-90" placeholder="Текст ДЗ" />
-              <div class="mt-2 flex items-center gap-2 flex-wrap">
-                <button class="px-3 py-1 rounded-lg text-primary-90 border border-primary-10">📎 Прикрепить файл</button>
-                <button id="add-dz-btn" class="px-3 py-1 rounded-lg accent-bg text-white">Добавить</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="mt-8 text-center text-sm text-primary-70">
-      Mini App — светлая (бело-голубая) и тёмная тема. Настроено для учебной группы.
-    </footer>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Bottom Nav -->
+  <nav>
+    <button class="nav-btn" data-tab="home">🏠</button>
+    <button class="nav-btn" data-tab="dz">📚</button>
+    <button class="nav-btn" data-tab="add">➕</button>
+    <button class="nav-btn" data-tab="news">📢</button>
+    <button class="nav-btn" data-tab="settings">⚙️</button>
+  </nav>
+
+  <script>
+    // Установка текущей даты
+    document.getElementById('current-date').textContent =
+      new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+
+    // Темы (пример: можно вынести в настройки)
+    const themes = ['light', 'blue', 'dark'];
+    let currentTheme = localStorage.getItem('miniapp_theme') || 'light';
+    document.documentElement.className = 'theme-' + currentTheme;
+
+    // Пример переключения темы по тапу в ⚙️
+    document.querySelector('[data-tab="settings"]').addEventListener('click', () => {
+      const next = themes[(themes.indexOf(currentTheme) + 1) % themes.length];
+      currentTheme = next;
+      document.documentElement.className = 'theme-' + currentTheme;
+      localStorage.setItem('miniapp_theme', next);
+    });
+
+    // Навигация (заглушка)
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        alert('Раздел: ' + btn.dataset.tab);
+      });
+    });
+  </script>
 </body>
 </html>
