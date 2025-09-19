@@ -1,237 +1,57 @@
 <!DOCTYPE html>
-<html lang="ru" class="theme-light">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini App — Домашка</title>
-  <style>
-    /* ==== ТЕМЫ ==== */
-    :root {
-      --bg: #ffffff;
-      --muted: #f2f4f7;
-      --text: #0f172a;
-      --card: #ffffff;
-      --accent: #0ea5e9;
-      --accent-600: #0284c7;
-    }
-
-    .theme-light {
-      --bg: #f9fafb;
-      --muted: #f2f4f7;
-      --text: #0f172a;
-      --card: #ffffff;
-      --accent: #0ea5e9;
-      --accent-600: #0284c7;
-    }
-
-    .theme-blue {
-      --bg: #f8fbff;
-      --muted: #eef8ff;
-      --text: #05263a;
-      --card: #ffffff;
-      --accent: #0ea5ff;
-      --accent-600: #0077c2;
-    }
-
-    .theme-dark {
-      --bg: #0b1220;
-      --muted: #071022;
-      --text: #ffffff;
-      --card: #071627;
-      --accent: #60a5fa;
-      --accent-600: #3b82f6;
-    }
-
-    /* ==== ОСНОВА ==== */
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 20px 0 70px 0; /* больше отступ сверху для хедера */
-    }
-
-    h1, h3 {
-      margin: 0;
-    }
-
-    .p-3 { padding: 12px; }
-    .mb-3 { margin-bottom: 12px; }
-    .mb-4 { margin-bottom: 16px; }
-    .mt-2 { margin-top: 8px; }
-
-    .bg-card { background: var(--card); }
-    .muted { background: var(--muted); }
-    .rounded-xl { border-radius: 16px; }
-    .rounded-lg { border-radius: 12px; }
-    .shadow { box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-
-    .text-sm { font-size: 14px; }
-    .text-xs { font-size: 12px; }
-    .font-medium { font-weight: 500; }
-
-    button, textarea {
-      font-family: inherit;
-      border: none;
-      outline: none;
-    }
-
-    /* ==== КНОПКИ ==== */
-    .file-btn {
-      padding: 8px 12px;
-      border-radius: 12px;
-      background: var(--muted);
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .file-btn:hover { background: var(--accent-600); color: #fff; }
-
-    .accent-bg {
-      background: var(--accent);
-    }
-
-    .action-btn {
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .action-btn:hover { background: var(--accent-600); }
-
-    /* ==== НИЖНЯЯ НАВИГАЦИЯ ==== */
-    nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--card);
-      border-top: 1px solid rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 0;
-    }
-
-    .nav-btn {
-      flex: 1;
-      text-align: center;
-      font-size: 22px;
-      padding: 6px 0;
-      cursor: pointer;
-    }
-
-    /* ==== ТЕКСТОВЫЕ ПОЛЯ ==== */
-    textarea {
-      width: 100%;
-      background: var(--muted);
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 14px;
-      resize: vertical;
-      color: var(--text);
-    }
-
-    /* ==== ХЕДЕР ==== */
-    header {
-      padding: 24px 12px 16px 12px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
-    header p {
-      font-size: 14px;
-      color: rgba(0,0,0,0.6);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чисто для пилотов, Пилоты и Диспетчеры сила, остальное могила</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="p-3">
+    <div class="container tma-container">
+        <header>
+            <div class="logo">Чисто для пилотов, Пилоты и Диспетчеры сила, остальное могила</div>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </header>
 
-    <!-- Header -->
-    <header class="mb-4">
-      <h1>📚 Домашка & Новости</h1>
-      <p>Управление прямо из Telegram Mini App</p>
-    </header>
+        <main id="mainContent">
+            <div class="nav">
+                <div class="nav-btn" data-section="homework">📚 Домашка</div>
+                <div class="nav-btn" data-section="news">📢 Новости</div>
+                <div class="nav-btn" data-section="krs">📅 Темы КТ и СРС</div>
+                <div class="nav-btn" data-section="assistants">📖 Помощники студента</div>
+                <div class="nav-btn" data-section="addHomework">➕ Добавить ДЗ</div>
+                <div class="nav-btn" data-section="addNews">📝 Опубликовать новость</div>
+            </div>
 
-    <!-- Quick Stats -->
-    <div class="bg-card p-3 rounded-xl shadow mb-3">
-      <h3 class="font-medium">Последнее ДЗ</h3>
-      <p class="text-sm mt-1">Математика: стр. 21, задачи 5–7</p>
-      <p class="text-xs mt-2" style="opacity: 0.7;">Обновлено: <span id="current-date"></span></p>
+            <div id="contentArea">
+                <!-- Контент будет динамически подгружаться здесь -->
+            </div>
+        </main>
+
+        <div class="tma-navbar">
+            <div class="tma-nav-btn" data-section="home">
+                <div class="tma-nav-icon">🏠</div>
+                <span>Главная</span>
+            </div>
+            <div class="tma-nav-btn" data-section="homework">
+                <div class="tma-nav-icon">📚</div>
+                <span>ДЗ</span>
+            </div>
+            <div class="tma-nav-btn" data-section="news">
+                <div class="tma-nav-icon">📢</div>
+                <span>Новости</span>
+            </div>
+            <div class="tma-nav-btn" data-section="krs">
+                <div class="tma-nav-icon">📅</div>
+                <span>КТ/СРС</span>
+            </div>
+            <div class="tma-nav-btn" data-section="assistants">
+                <div class="tma-nav-icon">🤖</div>
+                <span>Помощники</span>
+            </div>
+        </div>
     </div>
 
-    <!-- Homework -->
-    <div class="bg-card p-3 rounded-xl shadow mb-3">
-      <h3 class="font-medium">📖 Домашка</h3>
-      <div class="mt-2 text-sm">
-        <b>Информатика</b> — Сделать калькулятор дробей на Python
-      </div>
-      <div class="mt-2 flex gap-2 flex-wrap">
-        <button class="file-btn">📎 solution.py</button>
-        <button class="file-btn">🖼️ diagram.png</button>
-      </div>
-    </div>
-
-    <!-- News -->
-    <div class="bg-card p-3 rounded-xl shadow mb-3">
-      <h3 class="font-medium">📰 Новости</h3>
-      <ul class="mt-2 text-sm" style="list-style: none; padding: 0; margin: 0;">
-        <li class="muted p-2 rounded-lg">📢 10 сент — Новое расписание консультаций</li>
-        <li class="muted p-2 rounded-lg mt-2">📢 3 сент — Сдача курсовых работ</li>
-      </ul>
-    </div>
-
-    <!-- Publish -->
-    <div class="bg-card p-3 rounded-xl shadow">
-      <h3 class="font-medium">➕ Добавить</h3>
-      <textarea rows="3" placeholder="Напиши новость или ДЗ..."></textarea>
-      <button class="action-btn">✅ Опубликовать</button>
-    </div>
-
-  </div>
-
-  <!-- Bottom Nav -->
-  <nav>
-    <button class="nav-btn" data-tab="home">🏠</button>
-    <button class="nav-btn" data-tab="dz">📚</button>
-    <button class="nav-btn" data-tab="add">➕</button>
-    <button class="nav-btn" data-tab="news">📢</button>
-    <button class="nav-btn" data-tab="settings">⚙️</button>
-  </nav>
-
-  <script>
-    // Установка текущей даты
-    document.getElementById('current-date').textContent =
-      new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
-
-    // Темы
-    const themes = ['light', 'blue', 'dark'];
-    let currentTheme = localStorage.getItem('miniapp_theme') || 'light';
-    document.documentElement.className = 'theme-' + currentTheme;
-
-    // Переключение темы
-    document.querySelector('[data-tab="settings"]').addEventListener('click', () => {
-      const next = themes[(themes.indexOf(currentTheme) + 1) % themes.length];
-      currentTheme = next;
-      document.documentElement.className = 'theme-' + currentTheme;
-      localStorage.setItem('miniapp_theme', next);
-    });
-
-    // Навигация (заглушка)
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        alert('Раздел: ' + btn.dataset.tab);
-      });
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
